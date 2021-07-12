@@ -3,8 +3,10 @@
     <h2>{{ msg }}</h2>
 
 
-    <ul v-for="(film,index) in filmList" :key="index">
-      <li >{{ film.title }}</li>
+    <ul v-for="(film,index) in filmList" :key="index"><strong>Film: {{ film.title }}</strong> 
+      <li >Titolo originale: {{ film.original_title }}</li>
+      <li >Lingua originale: {{ film.original_language }}</li>
+      <li >Voto medio: {{ film.vote_average }}</li>
     </ul>
 
     
