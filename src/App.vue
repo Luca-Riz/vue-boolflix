@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     
-    <Header msg="Boolflix"/>
+    <Header msg="Boolflix" @inputText="apiMod" />
     <Main msg="This is the main"/>
 
   </div>
@@ -16,7 +16,15 @@ export default {
   components: {
     Header,
     Main
-  }
+  },
+
+  methods: {
+    apiMod(){
+      // da fare 
+    }
+  },
+
+
 }
 </script>
 

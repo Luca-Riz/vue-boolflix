@@ -5,9 +5,17 @@
     </div>
 
     <div class="search">
-      <input type="text">
-      <button>Search</button>
+      <input 
+      type="text"
+      placeholder="Digita cosa cercare"
+      v-model.trim="inputText">
+
+      <button
+      type="submit"
+      @click="setApi">Search</button>
+
       <button>Reset</button>
+
     </div>
 
   </div>
@@ -18,6 +26,24 @@ export default {
   name: 'Header',
   props: {
     msg: String
+  },
+
+  data() {
+    return {
+        inputText:'',
+        api: '',
+    }
+  },
+
+  methods: {
+    setApi: function(){
+      // console.log(this.inputText);
+      this.api = "https://api.themoviedb.org/3/search/movie?api_key=e14a682f2cb51ebef668a83973649087&query="
+      + this.inputText + 
+      "&language=it-IT";
+      console.log(this.api);
+      this.$emit('api');
+    }
   },
 
 }

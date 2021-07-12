@@ -2,8 +2,9 @@
   <div class="hello">
     <h2>{{ msg }}</h2>
 
-
-    <ul v-for="(film,index) in filmList" :key="index"><strong>Film: {{ film.title }}</strong> 
+    <!-- estrapolo i dati dall'array filmList -->
+    <ul v-for="(film,index) in filmList" :key="index">
+      <strong>Film: {{ film.title }}</strong> 
       <li >Titolo originale: {{ film.original_title }}</li>
       <li >Lingua originale: {{ film.original_language }}</li>
       <li >Voto medio: {{ film.vote_average }}</li>
