@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     
-    <Header msg="Boolflix" @apiMod="newApi" /> 
-    <!-- @inputText="apiMod" andrà dentro qui sopra -->
+    <Header msg="Boolflix" @ApiMod="getFilm" /> 
+
     <Main v-for="(film,index) in filmList" :key="index"
       :title="film.title"
       :originalTitle="film.original_title"
@@ -23,35 +23,35 @@ export default {
 
   data(){
     return {
-      apiURL: '',
+      apiURL: ApiMod,
       filmList: []
     }
   },
 
   components: {
     Header,
-    Main
+    Main,
+    ApiMod
   },
 
-    methods: {
-      newApi(apiModify){
-        this.apiURL = apiModify;
-        console.log(this.apiURL);
-        this.getFilm();
-      },
+  // created(){
+  //   this.getFilm();
+  // },
 
 
 
-      getFilm(){
-        axios
-          .get(this.apiURL)
-          .then(response => {
-            // console.log(response.data);
-            this.filmList = response.data.results;
-            console.log(this.filmList);
-          })
-      }
-    },
+
+  methods: {
+    getFilm(){
+      axios
+        .get(this.apiURL)
+        .then(response => {
+          // console.log(response.data);
+          this.filmList = response.data.results;
+          console.log(this.filmList);
+        })
+    }
+  },
 
 }
 </script>
