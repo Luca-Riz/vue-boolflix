@@ -9,7 +9,6 @@
       :language="film.original_language"
       :vote="film.vote_average"/>   
     
-
   </div>
 </template>
 
@@ -33,31 +32,31 @@ export default {
     Main
   },
 
-    methods: {
-      newApi(apiModify){
-        this.apiURL = apiModify;
-        console.log(this.apiURL);
-        this.getFilm();
-      },
-
-
-
-      getFilm(){
-        axios
-          .get(this.apiURL)
-          .then(response => {
-            // console.log(response.data);
-            this.filmList = response.data.results;
-            console.log(this.filmList);
-          })
-      }
+  methods: {
+    newApi(apiModify){
+      this.apiURL = apiModify;
+      console.log(this.apiURL);
+      this.getFilm();
     },
+  
+    getFilm(){
+      axios
+        .get(this.apiURL)
+        .then(response => {
+          // console.log(response.data);
+          this.filmList = response.data.results;
+          console.log(this.filmList);
+        })
+        .catch(error => {
+          console.log("Errore : " + error);
+        })
+    }
+  },
 
 }
 </script>
 
 <style lang="scss">
 @import '@/style/general.scss';
-
 
 </style>

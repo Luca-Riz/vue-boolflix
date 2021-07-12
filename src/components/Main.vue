@@ -2,14 +2,12 @@
   <div class="hello">
     <h2>{{ msg }}</h2>
 
-
     <ul>
-      <li>Film: {{ title }}</li> 
-      <li >Titolo originale: {{ originalTitle }}</li>
-      <li >Lingua originale: {{ language }}</li>
-      <li >Voto medio: {{ vote }}</li>
+      <li>Titolo: {{ title }}</li> 
+      <li>Titolo originale: {{ originalTitle }}</li>
+      <li>Lingua originale: {{ language }}</li>
+      <li>Voto medio: {{ vote }}</li>
     </ul>
-
     
   </div>
 </template>
@@ -24,15 +22,7 @@ export default {
     originalTitle: String,
     language: String,
     vote: Number,
-
   },
-
- 
-
-
-
-
-  
 }
 </script>
 
