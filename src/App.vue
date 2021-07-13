@@ -12,8 +12,8 @@
 
     <h4>Risultato serie tv:</h4>
     <Serie v-for="(serie,index) in serieList" :key="index"
-      :title="serie.title"
-      :originalTitle="serie.original_title"
+      :title="serie.name"
+      :originalTitle="serie.original_name"
       :language="serie.original_language"
       :vote="serie.vote_average"/>
     
