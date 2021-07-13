@@ -37,8 +37,6 @@ export default {
   methods: {
     //* creo il mio url
     newApi(apiModify){
-      // this.apiUrl = apiModify;
-      // console.log("in App apiUrl: " + this.apiUrl);
 
       axios
         .get(this.apiUrl, {
