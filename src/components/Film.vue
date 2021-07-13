@@ -15,7 +15,7 @@
             </div>
             <div v-else> {{ language }} </div>
         </li>
-        <li>Voto medio: {{ vote }}</li>
+        <li>Voto medio: {{ starVote }}</li>
       </ul>    
     </div>
 
@@ -41,7 +41,8 @@ export default {
   data() {
     return {
       flags: [ "en", "es", "hr", "it", "pt"],
-      urlImg: ''
+      urlImg: '',
+      starVote: ''
     }
   },
 
@@ -50,7 +51,9 @@ export default {
     urlFlagCreate(){
       this.urlFlag = require("../assets/flag/" + this.language + ".png");
       this.urlImg = "https://image.tmdb.org/t/p/" + "w342" + this.imgPath;
-      console.log(this.urlImg);
+      // console.log(this.urlImg);
+      this.starVote = Math.round(this.vote / 2);
+      // console.log(this.starVote);
       return this.urlFlag
     }
   },
