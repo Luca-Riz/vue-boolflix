@@ -4,14 +4,14 @@
     <Header msg="Boolflix" @apiMod="newApi" /> 
 
     <h4>Risultato film:</h4>
-    <Film v-for="(film,index) in filmList" :key="index"
+    <Film v-for="film in filmList" :key="film.id"
       :title="film.title"
       :originalTitle="film.original_title"
       :language="film.original_language"
       :vote="film.vote_average"/>
 
     <h4>Risultato serie tv:</h4>
-    <Serie v-for="(serie,index) in serieList" :key="index"
+    <Serie v-for="serie in serieList" :key="serie.id"
       :title="serie.name"
       :originalTitle="serie.original_name"
       :language="serie.original_language"
