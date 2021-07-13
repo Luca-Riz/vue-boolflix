@@ -35,15 +35,15 @@ export default {
 
   methods: {
     setApi: function(){
-      // console.log(this.inputText);
-      this.api = "https://api.themoviedb.org/3/search/movie?api_key=e14a682f2cb51ebef668a83973649087&query="
-      + this.inputText + 
-      "&language=it-IT";
+      console.log(this.inputText);
+      //! da cancellare dopo aver ricostruito in App l'url
+      // this.api = "https://api.themoviedb.org/3/search/movie?api_key=e14a682f2cb51ebef668a83973649087&query="
+      // + this.inputText + 
+      // "&language=it-IT";
       // console.log(this.api);
-      this.$emit( 'apiMod', this.api);
+      this.$emit( 'apiMod', this.inputText);
     }
   },
-
 }
 </script>
 

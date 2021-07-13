@@ -22,8 +22,10 @@ export default {
 
   data(){
     return {
-      apiURL: '',
-      filmList: []
+      apiUrl: 'https://api.themoviedb.org/3/search/movie',
+      apiKey: 'e14a682f2cb51ebef668a83973649087',
+      language: 'it-IT',
+      filmList: ''
     }
   },
 
@@ -33,15 +35,20 @@ export default {
   },
 
   methods: {
+    //* creo il mio url
     newApi(apiModify){
-      this.apiURL = apiModify;
-      console.log(this.apiURL);
-      this.getFilm();
-    },
-  
-    getFilm(){
+      // this.apiUrl = apiModify;
+      // console.log("in App apiUrl: " + this.apiUrl);
+
       axios
-        .get(this.apiURL)
+        .get(this.apiUrl, {
+          params: {
+            api_key: this.apiKey,
+            language: this.language,
+            query: apiModify
+          }
+
+        })
         .then(response => {
           // console.log(response.data);
           this.filmList = response.data.results;
