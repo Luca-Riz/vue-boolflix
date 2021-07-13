@@ -37,7 +37,6 @@ export default {
   methods: {
     //* creo il mio url
     newApi(apiModify){
-
       axios
         .get(this.apiUrl, {
           params: {
@@ -45,7 +44,6 @@ export default {
             language: this.language,
             query: apiModify
           }
-
         })
         .then(response => {
           // console.log(response.data);
