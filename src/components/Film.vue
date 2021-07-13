@@ -15,7 +15,7 @@
             </div>
             <div v-else> {{ language }} </div>
         </li>
-        <li>Voto medio: {{ starVote }}</li>
+        <li>Voto medio: {{ starVote }} <i class="fas fa-star"></i></li>
       </ul>    
     </div>
 
@@ -65,6 +65,10 @@ export default {
 
   img {
     height: 30px;
+  }
+
+  .fas {
+    color: red;
   }
 
 </style>
