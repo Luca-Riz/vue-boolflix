@@ -28,7 +28,7 @@ import Serie from './components/Serie.vue'
 
 export default {
   name: 'App',
-
+ 
   data(){
     return {
       apiUrl: 'https://api.themoviedb.org/3/search/movie',
