@@ -5,9 +5,12 @@
     <ul>
       <li><strong> Titolo: </strong> {{ title }}</li> 
       <li>Titolo originale: {{ originalTitle }}</li>
-      <li>
-        Lingua originale:  
-        <img :src="urlFlagCreate()" :alt="language">
+      <li class="d-flex">
+        Lingua originale:   
+          <div v-if="flags.includes( language )">
+            <img :src="urlFlagCreate()" :alt="language">
+          </div>
+          <div v-else> {{ language }} </div>
       </li>
       <li>Voto medio: {{ vote }}</li>
     </ul>
@@ -30,7 +33,9 @@ export default {
 
   data() {
     return {
-      urlFlag:'',
+      // urlFlag:'',
+      flags: 
+      [ "en", "es", "hr", "it", "pt"]
     }
   },
 
