@@ -5,7 +5,8 @@
     <ul>
       <li>Titolo: {{ title }}</li> 
       <li>Titolo originale: {{ originalTitle }}</li>
-      <li>Lingua originale: {{ language }}</li>
+      <li>
+        <img src="../assets/flag/en.png" alt="en"> Lingua originale: {{ language }}</li>
       <li>Voto medio: {{ vote }}</li>
     </ul>
     
@@ -27,5 +28,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
+  img {
+    height: 30px;
+  }
 
 </style>
