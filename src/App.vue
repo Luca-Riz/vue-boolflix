@@ -8,14 +8,16 @@
       :title="film.title"
       :originalTitle="film.original_title"
       :language="film.original_language"
-      :vote="film.vote_average"/>
+      :vote="film.vote_average"
+      :imgPath="film.backdrop_path"/>
 
     <h4>Risultato serie tv:</h4>
     <Serie v-for="serie in serieList" :key="serie.id"
       :title="serie.name"
       :originalTitle="serie.original_name"
       :language="serie.original_language"
-      :vote="serie.vote_average"/>
+      :vote="serie.vote_average"
+      :imgPath="serie.backdrop_path"/>
     
   </div>
 </template>

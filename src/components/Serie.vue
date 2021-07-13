@@ -4,6 +4,9 @@
     <div class="card">
       <ul>
         <li><strong> Titolo: </strong> {{ title }}</li> 
+        <li>
+          <img :src="urlImg" alt="">
+        </li>
         <li>Titolo originale: {{ originalTitle }}</li>
         <li class="d-flex">
           Lingua originale:   
@@ -31,18 +34,21 @@ export default {
     originalTitle: String,
     language: String,
     vote: Number,
-
+    imgPath: String,
   },
 
   data() {
     return {
-      flags: [ "en", "es", "hr", "it", "pt"]
+      flags: [ "en", "es", "hr", "it", "pt"],
+      urlImg: ''
     }
   },
 
   methods: {
     urlFlagCreate(){
       this.urlFlag = require("../assets/flag/" + this.language + ".png");
+      this.urlImg = "https://image.tmdb.org/t/p/" + "w342" + this.imgPath;
+      console.log(this.urlImg);
       return this.urlFlag
     }
   },
