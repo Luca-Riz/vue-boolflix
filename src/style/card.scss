@@ -1,21 +1,27 @@
 .card {
     position: relative;
+    overflow: hidden;
     background-color: black;
-    border: 1px solid greenyellow;
+    border: 1px solid rgb(47, 47, 47);
     width: 342px;
-    height: 512px;
+    height: 510px;
 
     .cover {
         position: absolute;
-        display: none;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        // display: none;
 
         img{
-            width: 342px;
+            min-width: 342px;
+            min-height: 510px;
             object-fit: cover;
         }
     }
 
     .data{
+        display: none;
         overflow-y: auto;
         color:white;
 

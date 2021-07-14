@@ -6,7 +6,7 @@
 
     <div class="search m-3 d-flex">
 
-      <input class="form-control"
+      <input class="form-control me-2"
       type="text"
       placeholder="Digita cosa cercare"
       v-model.trim="inputText">
@@ -48,7 +48,8 @@ export default {
 <style scoped lang="scss">
 
 h1{
+  font-size: 4rem;
   color:red;
 }
-  
+
 </style>

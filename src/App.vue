@@ -1,13 +1,15 @@
 <template>
   <div id="app">
 
-    <div class="container">
+    <div class="container-fluid">
 
-      <div class="header">
+      <!-- <div class="headers"> -->
         <Header msg="Boolflix" @apiMod="newApi" /> 
-      </div>
+      <!-- </div> -->
 
-      <Main :filmList="filmList" :serieList="serieList" /> 
+      <!-- <div> -->
+        <Main :filmList="filmList" :serieList="serieList" /> 
+      <!-- </div> -->
 
     </div>
     

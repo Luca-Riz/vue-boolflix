@@ -1,26 +1,26 @@
 <template>
-  <div>
+  <div class="">
 
-    <h4>Risultato film:</h4>
-    <div class="film">
-      <Card v-for="film in filmList" :key="film.id"
-        :title="film.title"
-        :originalTitle="film.original_title"
-        :language="film.original_language"
-        :vote="film.vote_average"
-        :imgPath="film.poster_path"
-        :overview="film.overview"/>
+    <h4 class="fs-2 mx-3">Film:</h4>
+    <div class="film d-flex flex-wrap justify-content-between">
+        <Card v-for="film in filmList" :key="film.id"
+          :title="film.title"
+          :originalTitle="film.original_title"
+          :language="film.original_language"
+          :vote="film.vote_average"
+          :imgPath="film.poster_path"
+          :overview="film.overview"/>
     </div>
 
-    <h4>Risultato serie tv:</h4>
-    <div class="serie">
-      <Card v-for="serie in serieList" :key="serie.id"
-        :title="serie.name"
-        :originalTitle="serie.original_name"
-        :language="serie.original_language"
-        :vote="serie.vote_average"
-        :imgPath="serie.poster_path"
-        :overview="serie.overview"/>
+    <h4 class="fs-2 mx-3">Serie tv:</h4>
+    <div class="serie d-flex flex-wrap justify-content-between">
+        <Card v-for="serie in serieList" :key="serie.id"
+          :title="serie.name"
+          :originalTitle="serie.original_name"
+          :language="serie.original_language"
+          :vote="serie.vote_average"
+          :imgPath="serie.poster_path"
+          :overview="serie.overview"/>
     </div>
 
   </div>
