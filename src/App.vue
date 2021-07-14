@@ -3,21 +3,7 @@
     
     <Header msg="Boolflix" @apiMod="newApi" /> 
 
-    <h4>Risultato film:</h4>
-    <Film v-for="film in filmList" :key="film.id"
-      :title="film.title"
-      :originalTitle="film.original_title"
-      :language="film.original_language"
-      :vote="film.vote_average"
-      :imgPath="film.backdrop_path"/>
-
-    <h4>Risultato serie tv:</h4>
-    <Serie v-for="serie in serieList" :key="serie.id"
-      :title="serie.name"
-      :originalTitle="serie.original_name"
-      :language="serie.original_language"
-      :vote="serie.vote_average"
-      :imgPath="serie.backdrop_path"/>
+    <Main :filmList="filmList" :serieList="serieList" /> 
     
   </div>
 </template>
@@ -25,8 +11,7 @@
 <script>
 import axios from 'axios';
 import Header from './components/Header.vue'
-import Film from './components/Film.vue'
-import Serie from './components/Serie.vue'
+import Main from './components/Main.vue'
 
 export default {
   name: 'App',
@@ -45,8 +30,8 @@ export default {
 
   components: {
     Header,
-    Film,
-    Serie
+    Main
+
   },
 
   methods: {
