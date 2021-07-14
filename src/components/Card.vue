@@ -15,7 +15,7 @@
               </div>
               <div v-else> {{ language }} </div>
           </li>
-          <li>
+          <li v-if="this.starVote != 0">
             <!-- ul stelline voto -->
             <ul class="d-flex card-text">
               <strong>Voto medio: </strong> 
