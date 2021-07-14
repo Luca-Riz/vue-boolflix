@@ -21,7 +21,7 @@
             <li v-for="item in starVote" :key="item">
               <i class="fas fa-star"></i>
             </li>
-            <li v-for="(ite,j) in starVoteNeg" :key="j">
+            <li v-for="(item, i) in starVoteNeg" :key="'A'+ i">
               <i class="far fa-star"></i>
             </li>
           </ul>
