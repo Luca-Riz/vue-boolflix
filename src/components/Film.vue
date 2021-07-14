@@ -16,8 +16,17 @@
             <div v-else> {{ language }} </div>
         </li>
         <li>
-          Voto medio: {{ starVote }} 
-          <!-- <i class="fas fa-star"></i> -->
+          <!-- ul stelline voto -->
+          <ul class="d-flex">Voto medio: 
+            <li v-for="item in starVote" :key="item">
+              <i class="fas fa-star"></i>
+            </li>
+            <li v-for="(ite,j) in starVoteNeg" :key="j">
+              <i class="far fa-star"></i>
+            </li>
+          </ul>
+          <!-- fine ul stelline voto -->
+
         </li>
       </ul>    
     </div>
@@ -45,7 +54,8 @@ export default {
     return {
       flags: [ "en", "es", "hr", "it", "pt"],
       urlImg: '',
-      starVote: '',
+      starVote: 0,
+      starVoteNeg: 0
     }
   },
 
@@ -63,6 +73,9 @@ export default {
       if (this.imgPath !== null){
         this.urlImg = "https://image.tmdb.org/t/p/" + "w342" + this.imgPath;
       } 
+
+      //starVoteNeg
+      this.starVoteNeg = 5 - this.starVote;
 
       return this.urlFlag
     }
