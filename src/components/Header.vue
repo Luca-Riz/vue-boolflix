@@ -1,7 +1,7 @@
 <template>
   <div class="header d-flex justify-content-between align-items-center">
     <div class="title m-3">
-      <h1 class="text-uppercase">{{ msg }}</h1>
+      <h1 class="text-uppercase fw-bolder">{{ msg }}</h1>
     </div>
 
     <div class="search m-3 d-flex">

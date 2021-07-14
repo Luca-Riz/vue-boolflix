@@ -1,9 +1,15 @@
 <template>
   <div id="app">
-    
-    <Header msg="Boolflix" @apiMod="newApi" /> 
 
-    <Main :filmList="filmList" :serieList="serieList" /> 
+    <div class="container">
+
+      <div class="header">
+        <Header msg="Boolflix" @apiMod="newApi" /> 
+      </div>
+
+      <Main :filmList="filmList" :serieList="serieList" /> 
+
+    </div>
     
   </div>
 </template>
@@ -66,6 +72,5 @@ export default {
 
 @import '@/style/general.scss';
 @import '@/style/card.scss';
-
 
 </style>

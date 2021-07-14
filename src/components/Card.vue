@@ -2,33 +2,45 @@
   <div class="main">
 
     <div class="card">
-      <ul>
-        <li><strong> Titolo: </strong> {{ title }}</li> 
-        <li>
-          <img :src="urlImg" :alt="title" class="cover">
-        </li>
-        <li>Titolo originale: {{ originalTitle }}</li>
-        <li class="d-flex">
-          Lingua originale:   
-            <div v-if="flags.includes( language )" class="flag">
-              <img :src="urlFlagCreate()" :alt="language">
-            </div>
-            <div v-else> {{ language }} </div>
-        </li>
-        <li>
-          <!-- ul stelline voto -->
-          <ul class="d-flex">Voto medio: 
-            <li v-for="(item, i) in starVote" :key="i">
-              <i class="fas fa-star"></i>
-            </li>
-            <li v-for="(item, i) in starVoteNeg" :key="'A'+ i">
-              <i class="far fa-star"></i>
-            </li>
-          </ul>
-          <!-- fine ul stelline voto -->
+      
+      <!-- inizio copertina -->
+      <div class="cover">
+        <img :src="urlImg" :alt="title">
+      </div>
+      <!-- fine copertina -->
 
-        </li>
-      </ul>    
+      <!-- inizio dati film -->
+      <div class="data card-body">
+        <ul>
+          <li class="card-title fs-3"><strong> Titolo: </strong> {{ title }}</li> 
+          <li class="card-subtitle mb-2 text-muted">Titolo originale: {{ originalTitle }}</li>
+          <li class="d-flex align-items-center card-text ">
+            <strong>Lingua originale:</strong>    
+              <div v-if="flags.includes( language )" class="flag">
+                <img :src="urlFlagCreate()" :alt="language" class="ms-2">
+              </div>
+              <div v-else> {{ language }} </div>
+          </li>
+          <li>
+            <!-- ul stelline voto -->
+            <ul class="d-flex card-text">
+              <strong>Voto medio: </strong> 
+              <li v-for="(item, i) in starVote" :key="i">
+                <i class="fas fa-star"></i>
+              </li>
+              <li v-for="(item, i) in starVoteNeg" :key="'A'+ i">
+                <i class="far fa-star"></i>
+              </li>
+            </ul>
+            <!-- fine ul stelline voto -->
+          </li>
+          <li class="overwiew"> 
+            <strong>Panoramica: </strong> {{ overview }}
+            </li>
+        </ul> 
+      <!-- fine dati film -->
+           
+      </div>
     </div>
 
   </div>
@@ -47,6 +59,7 @@ export default {
     originalTitle: String,
     language: String,
     vote: Number,
+    overview: String,
     imgPath: String,
   },
 

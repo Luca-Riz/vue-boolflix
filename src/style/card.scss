@@ -1,8 +1,28 @@
-img.cover {
+.card {
+    position: relative;
+    background-color: black;
+    border: 1px solid greenyellow;
     width: 342px;
-    object-fit: cover;
+    height: 512px;
+
+    .cover {
+        position: absolute;
+        display: none;
+
+        img{
+            width: 342px;
+            object-fit: cover;
+        }
+    }
+
+    .data{
+        overflow-y: auto;
+        color:white;
+
+    }
+
 }
 
 .flag img {
-    height: 50px;
+    height: 20px;
 }
