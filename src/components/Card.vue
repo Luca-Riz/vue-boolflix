@@ -7,7 +7,7 @@
       <div class="data card-body">
         <ul>
           <li class="card-title fs-3"><strong> Titolo: </strong> {{ title }}</li> 
-          <li class="card-subtitle mb-2 text-muted">Titolo originale: {{ originalTitle }}</li>
+          <li v-if="this.title !== this.originalTitle" class="card-subtitle mb-2"> Titolo originale: {{ originalTitle }}</li>
           <li class="d-flex align-items-center card-text ">
             <strong>Lingua originale:</strong>    
               <div v-if="flags.includes( language )" class="flag">
