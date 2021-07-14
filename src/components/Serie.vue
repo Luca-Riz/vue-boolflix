@@ -46,12 +46,20 @@ export default {
   },
 
   methods: {
+// flag url
     urlFlagCreate(){
       this.urlFlag = require("../assets/flag/" + this.language + ".png");
-      this.urlImg = "https://image.tmdb.org/t/p/" + "w342" + this.imgPath;
-      // console.log(this.urlImg);
-      this.starVote = Math.round(this.vote / 2);
-      // console.log(this.starVote);
+
+      // calcolo numero stelle piene, se 0 o vuoto, setta a 0
+      if (parseInt(this.vote) != 0){
+        this.starVote = Math.round(parseInt(this.vote) / 2);
+      } else {this.starVote = 0}
+
+      //img url se presente
+      if (this.imgPath !== null){
+        this.urlImg = "https://image.tmdb.org/t/p/" + "w342" + this.imgPath;
+      } 
+
       return this.urlFlag
     }
   },
