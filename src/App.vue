@@ -39,7 +39,18 @@ export default {
   components: {
     Header,
     Main
+  },
 
+  mounted() {
+    axios
+      .all([
+        axios.get('https://api.themoviedb.org/3/movie/popular?api_key=e14a682f2cb51ebef668a83973649087&language=it-IT&page=1'),
+        axios.get('https://api.themoviedb.org/3/tv/popular?api_key=e14a682f2cb51ebef668a83973649087&language=it-IT&page=1'),
+      ])
+      .then(axios.spread( (responseFilm, responseTv) => {
+          this.filmList = responseFilm.data.results;
+          this.serieList = responseTv.data.results;
+      }))
   },
 
   methods: {
@@ -57,7 +68,7 @@ export default {
       axios
         .all([
           axios.get(this.apiUrl, request),
-          axios.get(this.apiUrlSerie, request)
+          axios.get(this.apiUrlSerie, request),
         ])
         .then(axios.spread( (responseFilm, responseTv) => {
           this.filmList = responseFilm.data.results;
