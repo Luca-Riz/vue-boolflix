@@ -3,12 +3,6 @@
 
     <div class="card">
       
-      <!-- inizio copertina -->
-      <div class="cover">
-        <img :src="urlImg" :alt="title">
-      </div>
-      <!-- fine copertina -->
-
       <!-- inizio dati film -->
       <div class="data card-body">
         <ul>
@@ -38,9 +32,15 @@
             <strong>Panoramica: </strong> {{ overview }}
             </li>
         </ul> 
-      <!-- fine dati film -->
-           
       </div>
+      <!-- fine dati film -->
+
+      <!-- inizio copertina -->
+      <div class="cover">
+        <img :src="urlImg" :alt="title">
+      </div>
+      <!-- fine copertina -->
+
     </div>
 
   </div>
