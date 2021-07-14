@@ -34,9 +34,9 @@ export default {
   data(){
     return {
       apiUrl: 'https://api.themoviedb.org/3/search/movie',
+      apiUrlSerie: 'https://api.themoviedb.org/3/search/tv',
       apiKey: 'e14a682f2cb51ebef668a83973649087',
       language: 'it-IT',
-      apiUrlSerie: 'https://api.themoviedb.org/3/search/tv',
       languageSerie: 'it_IT',
       filmList: '',
       serieList: ''
@@ -52,43 +52,25 @@ export default {
   methods: {
     //* creo il mio url
     newApi(apiModify){
-      axios
-        // film
-        .get(this.apiUrl, {
-          params: {
-            api_key: this.apiKey,
-            language: this.language,
-            query: apiModify
-          }
-        })
 
-        //film
-        .then(response => {
-          // console.log(response.data);
-          this.filmList = response.data.results;
-          console.log(this.filmList);
-        })
+      const request = {
+        params: {
+          api_key: this.apiKey,
+          language: this.language,
+          query: apiModify
+        }
+      }
 
       axios
-        //serie
-        .get(this.apiUrlSerie, {
-          params: {
-            api_key: this.apiKey,
-            language: this.languageSerie,
-            query: apiModify
-          }
-        })       
+        .all([
+          axios.get(this.apiUrl, request),
+          axios.get(this.apiUrlSerie, request)
+        ])
+        .then(axios.spread( (responseFilm, responseTv) => {
+          this.filmList = responseFilm.data.results;
+          this.serieList = responseTv.data.results;
+        }))
 
-        //serie
-        .then(responseSerie => {
-          // console.log(response.data);
-          this.serieList = responseSerie.data.results;
-          console.log(this.serieList);
-        })
-
-        .catch(error => {
-          console.log("Errore : " + error);
-        })
     }
   },
 
