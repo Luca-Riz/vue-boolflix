@@ -5,17 +5,29 @@
       <ul>
         <li><strong> Titolo: </strong> {{ title }}</li> 
         <li>
-          <img :src="urlImg" alt="">
+          <img :src="urlImg" :alt="title" class="cover">
         </li>
         <li>Titolo originale: {{ originalTitle }}</li>
         <li class="d-flex">
           Lingua originale:   
-            <div v-if="flags.includes( language )">
+            <div v-if="flags.includes( language )" class="flag">
               <img :src="urlFlagCreate()" :alt="language">
             </div>
             <div v-else> {{ language }} </div>
         </li>
-        <li>Voto medio: {{ starVote }}</li>
+        <li>
+          <!-- ul stelline voto -->
+          <ul class="d-flex">Voto medio: 
+            <li v-for="(item, i) in starVote" :key="i">
+              <i class="fas fa-star"></i>
+            </li>
+            <li v-for="(item, i) in starVoteNeg" :key="'A'+ i">
+              <i class="far fa-star"></i>
+            </li>
+          </ul>
+          <!-- fine ul stelline voto -->
+
+        </li>
       </ul>    
     </div>
 
@@ -28,6 +40,7 @@
 export default {
   name: 'Main',
   urlFlag: '',
+  urlImg: '',
   props: {
     msg: String,
     title: String,
@@ -41,12 +54,13 @@ export default {
     return {
       flags: [ "en", "es", "hr", "it", "pt"],
       urlImg: '',
-      starVote: ''
+      starVote: 0,
+      starVoteNeg: 0
     }
   },
 
   methods: {
-// flag url
+    // flag url
     urlFlagCreate(){
       this.urlFlag = require("../assets/flag/" + this.language + ".png");
 
@@ -56,9 +70,12 @@ export default {
       } else {this.starVote = 0}
 
       //img url se presente
-      if (this.imgPath !== null){
+      if (this.imgPath != null){
         this.urlImg = "https://image.tmdb.org/t/p/" + "w342" + this.imgPath;
-      } 
+      } else { this.urlImg = require("../assets/img/notFound.png")}
+
+      //starVoteNeg
+      this.starVoteNeg = 5 - this.starVote;
 
       return this.urlFlag
     }
@@ -68,9 +85,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
-  img {
-    height: 30px;
-  }
 
 </style>

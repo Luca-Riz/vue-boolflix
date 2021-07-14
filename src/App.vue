@@ -23,8 +23,8 @@ export default {
       apiKey: 'e14a682f2cb51ebef668a83973649087',
       language: 'it-IT',
       languageSerie: 'it_IT',
-      filmList: '',
-      serieList: ''
+      filmList: [],
+      serieList: []
     }
   },
 
@@ -63,6 +63,9 @@ export default {
 </script>
 
 <style lang="scss">
+
 @import '@/style/general.scss';
+@import '@/style/card.scss';
+
 
 </style>
