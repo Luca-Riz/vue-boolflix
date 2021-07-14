@@ -28,7 +28,7 @@
             </ul>
             <!-- fine ul stelline voto -->
           </li>
-          <li class="overwiew"> 
+          <li v-if="this.overview" class="overwiew"> 
             <strong>Panoramica: </strong> {{ overview }}
             </li>
         </ul> 
