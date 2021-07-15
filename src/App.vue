@@ -52,7 +52,7 @@ export default {
       .then(axios.spread( (responseFilm, responseTv) => {
           this.filmList = responseFilm.data.results;
           this.serieList = responseTv.data.results;
-      }))
+      }));
   },
 
   methods: {
@@ -76,14 +76,16 @@ export default {
         .then(axios.spread( (responseFilm, responseTv) => {
           this.filmList = responseFilm.data.results;
           this.serieList = responseTv.data.results;
-        }))
+        }));
 
 
 
       axios
-      .get('https://api.themoviedb.org/3/movie/19995/credits?api_key=e14a682f2cb51ebef668a83973649087&language=it-IT')
-      .then(response => (this.filmCast = response.data.cast, console.log(this.filmCast)))
+        .get('https://api.themoviedb.org/3/movie/19995/credits?api_key=e14a682f2cb51ebef668a83973649087&language=it-IT')
+        .then(response => (this.filmCast = response.data.cast, console.log(this.filmCast)))
+        .catch(error => console.log(error));
 
+      
     }
   },
 

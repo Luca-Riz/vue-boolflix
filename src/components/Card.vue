@@ -28,17 +28,15 @@
             </ul>
             <!-- fine ul stelline voto -->
           </li>
-          <li v-if="this.overview" class="overwiew"> 
+          <li v-if="overview" class="overwiew"> 
             <strong>Panoramica: </strong> {{ overview }}
           </li>
           <li>
-            <ul> Cast:
-              <li v-for="(actors, i) in filmCast" :key="'B' + i"> {{ actors.name }} </li>
+            <!-- cast compare solo se viene fatta una ricerca -->
+            <ul v-if="filmCast.length != 0"> Cast:
+              <li v-for="(actors, i) in 5" :key="'B' + i"> {{ filmCast[i].name }} </li>
             </ul>
           </li>
-
-
-
 
         </ul> 
       </div>
