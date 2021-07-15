@@ -10,6 +10,7 @@
           :language="film.original_language"
           :vote="film.vote_average"
           :imgPath="film.poster_path"
+          :id="film.id"
           :overview="film.overview"/>
     </div>
 
@@ -18,6 +19,7 @@
         <Card v-for="serie in serieList" :key="serie.id"
           :title="serie.name"
           :originalTitle="serie.original_name"
+          :id="serie.id"
           :language="serie.original_language"
           :vote="serie.vote_average"
           :imgPath="serie.poster_path"
@@ -36,7 +38,7 @@ export default {
     props: {
         filmList: Array,
         serieList: Array,
-        filmCast: Array
+        filmCast: Array //
     },
 
     components: {

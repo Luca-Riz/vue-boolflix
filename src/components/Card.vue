@@ -1,7 +1,7 @@
 <template>
   <div class="main m-3">
 
-    <div class="card">
+    <div @click="caricaCast" class="card" >
       
       <!-- inizio dati film -->
       <div class="data card-body">
@@ -30,11 +30,11 @@
           </li>
           <li v-if="overview" class="overwiew"> 
             <strong>Panoramica: </strong> {{ overview }}
+            
           </li>
           <li>
-            <!-- cast compare solo se viene fatta una ricerca -->
-            <ul v-if="filmCast.length != 0"> Cast:
-              <li v-for="(actors, i) in 5" :key="'B' + i"> {{ filmCast[i].name }} </li>
+            <ul v-if="filmCast"> Cast:
+              <li v-for="(item, i) in filmCast" :key="'B'+ i" class="ms-5"> {{ item.name }} </li>
             </ul>
           </li>
 
@@ -55,12 +55,13 @@
 </template>
 
 <script>
-
+import axios from 'axios';
 export default {
   name: 'Main',
   urlFlag: '',
   urlImg: '',
   props: {
+    id: Number,
     msg: String,
     title: String,
     originalTitle: String,
@@ -69,7 +70,6 @@ export default {
     overview: String,
     imgPath: String,
     actorsName: String,
-    filmCast: Array
   },
 
   data() {
@@ -77,12 +77,20 @@ export default {
       flags: [ "en", "es", "hr", "it", "pt"],
       urlImg: '',
       starVote: 0,
-      starVoteNeg: 0
+      starVoteNeg: 0,
+      filmCast:"",
     }
   },
 
   methods: {
-    // flag url
+
+    caricaCast(){
+      if( this.filmCast == '' ){
+        axios.get('https://api.themoviedb.org/3/movie/' + this.id + '/credits?api_key=e14a682f2cb51ebef668a83973649087&language=it-IT')
+        .then(  (responseCast) => { this.filmCast = responseCast.data.cast; console.log(this.filmCast); })
+      }
+    },
+
     urlFlagCreate(){
       this.urlFlag = require("../assets/flag/" + this.language + ".png");
 
@@ -102,6 +110,8 @@ export default {
       return this.urlFlag
     }
   },
+
+
 
 }
 </script>

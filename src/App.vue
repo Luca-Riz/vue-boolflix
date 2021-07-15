@@ -43,7 +43,7 @@ export default {
   },
 
   mounted() {
-    // chiamata axios per film e serie tv del momento
+    // chiamata axios per film e serie tv del momento all'apertura della pagina
     axios
       .all([
         axios.get('https://api.themoviedb.org/3/movie/popular?api_key=e14a682f2cb51ebef668a83973649087&language=it-IT&page=1'),
@@ -59,33 +59,44 @@ export default {
     //* creo il mio url
     newApi(apiModify){
 
-      const request = {
-        params: {
-          api_key: this.apiKey,
-          language: this.language,
-          query: apiModify
-        }
-      }
 
-      // chiamata api per search
-      axios
-        .all([
-          axios.get(this.apiUrl, request),
-          axios.get(this.apiUrlSerie, request),
-        ])
-        .then(axios.spread( (responseFilm, responseTv) => {
-          this.filmList = responseFilm.data.results;
-          this.serieList = responseTv.data.results;
-        }));
+            const request = {
+              params: {
+                api_key: this.apiKey,
+                language: this.language,
+                query: apiModify
+              }
+            };
+      
+            //* chiamata api per search - funziona
+            axios
+              .all([
+                axios.get(this.apiUrl, request),
+                axios.get(this.apiUrlSerie, request),
+              ])
+              .then(axios.spread( (responseFilm, responseTv) => {
+                this.filmList = responseFilm.data.results;
+                this.serieList = responseTv.data.results;
+               
+              }))
 
 
 
-      axios
-        .get('https://api.themoviedb.org/3/movie/19995/credits?api_key=e14a682f2cb51ebef668a83973649087&language=it-IT')
-        .then(response => (this.filmCast = response.data.cast, console.log(this.filmCast)))
-        .catch(error => console.log(error));
+
+
 
       
+      // //* chiamata axios per cast avatar - prova, funziona
+      // axios
+      //   .get('https://api.themoviedb.org/3/movie/19995/credits?api_key=e14a682f2cb51ebef668a83973649087&language=it-IT')
+      //   .then(response => (this.filmCast = response.data.cast, console.log(this.filmCast)))
+      //   .catch(error => console.log(error));
+
+
+
+
+
+
     }
   },
 
