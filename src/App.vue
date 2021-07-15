@@ -8,7 +8,7 @@
       <!-- </div> -->
 
       <!-- <div> -->
-        <Main :filmList="filmList" :serieList="serieList" /> 
+        <Main :filmList="filmList" :serieList="serieList" :filmCast="filmCast"/> 
       <!-- </div> -->
 
     </div>
@@ -82,18 +82,8 @@ export default {
 
       axios
       .get('https://api.themoviedb.org/3/movie/19995/credits?api_key=e14a682f2cb51ebef668a83973649087&language=it-IT')
-      .then(response => (this.filmCast = response, console.log(this.filmCast)))
+      .then(response => (this.filmCast = response.data.cast, console.log(this.filmCast)))
 
-      // axios
-      //   .all([
-      //     axios.get('https://api.themoviedb.org/3/movie/19995/credits?api_key=e14a682f2cb51ebef668a83973649087&language=it-IT'),
-      //     // axios.get(this.apiUrlSerie, request),
-      //   ])
-      //   .then(axios( (responseFilm) => {
-      //     this.filmCast = responseFilm;
-      //     console.log(this.filmCast);
-      //     // this.serieList = responseTv.data.results;
-      //   }))
     }
   },
 

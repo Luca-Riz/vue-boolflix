@@ -3,7 +3,8 @@
 
     <h4 class="fs-2 mx-3">Film:</h4>
     <div class="film d-flex flex-wrap justify-content-between">
-        <Card v-for="film in filmList" :key="film.id"
+        <Card :filmCast="filmCast"
+          v-for="film in filmList" :key="film.id"
           :title="film.title"
           :originalTitle="film.original_title"
           :language="film.original_language"
@@ -34,7 +35,8 @@ export default {
 
     props: {
         filmList: Array,
-        serieList: Array
+        serieList: Array,
+        filmCast: Array
     },
 
     components: {

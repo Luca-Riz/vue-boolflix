@@ -30,7 +30,16 @@
           </li>
           <li v-if="this.overview" class="overwiew"> 
             <strong>Panoramica: </strong> {{ overview }}
-            </li>
+          </li>
+          <li>
+            <ul> Cast:
+              <li v-for="(actors, i) in filmCast" :key="'B' + i"> {{ actors.name }} </li>
+            </ul>
+          </li>
+
+
+
+
         </ul> 
       </div>
       <!-- fine dati film -->
@@ -61,6 +70,8 @@ export default {
     vote: Number,
     overview: String,
     imgPath: String,
+    actorsName: String,
+    filmCast: Array
   },
 
   data() {
