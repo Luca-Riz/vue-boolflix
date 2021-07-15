@@ -32,7 +32,8 @@ export default {
       language: 'it-IT',
       languageSerie: 'it_IT',
       filmList: [],
-      serieList: []
+      serieList: [],
+      filmCast: []
     }
   },
 
@@ -42,6 +43,7 @@ export default {
   },
 
   mounted() {
+    // chiamata axios per film e serie tv del momento
     axios
       .all([
         axios.get('https://api.themoviedb.org/3/movie/popular?api_key=e14a682f2cb51ebef668a83973649087&language=it-IT&page=1'),
@@ -65,6 +67,7 @@ export default {
         }
       }
 
+      // chiamata api per search
       axios
         .all([
           axios.get(this.apiUrl, request),
@@ -75,6 +78,22 @@ export default {
           this.serieList = responseTv.data.results;
         }))
 
+
+
+      axios
+      .get('https://api.themoviedb.org/3/movie/19995/credits?api_key=e14a682f2cb51ebef668a83973649087&language=it-IT')
+      .then(response => (this.filmCast = response, console.log(this.filmCast)))
+
+      // axios
+      //   .all([
+      //     axios.get('https://api.themoviedb.org/3/movie/19995/credits?api_key=e14a682f2cb51ebef668a83973649087&language=it-IT'),
+      //     // axios.get(this.apiUrlSerie, request),
+      //   ])
+      //   .then(axios( (responseFilm) => {
+      //     this.filmCast = responseFilm;
+      //     console.log(this.filmCast);
+      //     // this.serieList = responseTv.data.results;
+      //   }))
     }
   },
 
