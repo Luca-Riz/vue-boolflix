@@ -33,7 +33,7 @@
             
           </li>
           <li>
-            <ul v-if="filmCast"> Cast:
+            <ul v-if="filmCast && filmCast.length >= 5"> Cast:
               <li v-for="(item, i) in 5" :key="i" class="ms-5"> {{ filmCast[i].name }} </li>
             </ul>
           </li>
