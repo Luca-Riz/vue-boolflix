@@ -1,7 +1,7 @@
 <template>
   <div class="main m-3">
 
-    <div @click="caricaCast" class="card" >
+    <div @mouseover="caricaCast" class="card" >
       
       <!-- inizio dati film -->
       <div class="data card-body">
@@ -32,6 +32,7 @@
             <strong>Panoramica: </strong> {{ overview }}
           </li>
 
+          <!-- visualizzazione cast -->
           <li>
             <ul v-if="filmCast && filmCast.length >= 5"> Cast:
               <li v-for="(item, i) in 5" :key="i" class="ms-5"> {{ filmCast[i].name }} </li>
@@ -40,15 +41,18 @@
               <li v-for="(item, i) in filmCast.length" :key="i" class="ms-5"> {{ filmCast[i].name }} </li>
             </ul>
           </li>
+          <!-- fine visualizzazione cast -->
 
+          <!-- visualizzazione generi -->
           <li>
-            <ul v-if="filmGenre.length >= 5"> Genere:
+            <ul v-if="filmGenre && filmGenre.length >= 5"> Genere:
               <li v-for="(item, j) in 5" :key="j" class="ms-5"> {{ filmGenre[j].name }} </li>
             </ul>
-            <ul v-if="filmGenre.length < 5"> Genere:
+            <ul v-if="filmGenre && filmGenre.length < 5"> Genere:
               <li v-for="(item, j) in filmGenre.length" :key="j" class="ms-5"> {{ filmGenre[j].name }} </li>
             </ul>
           </li>
+          <!-- fine visualizzazione generi -->
 
         </ul> 
       </div>
