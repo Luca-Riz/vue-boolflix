@@ -30,11 +30,23 @@
           </li>
           <li v-if="overview" class="overwiew"> 
             <strong>Panoramica: </strong> {{ overview }}
-            
           </li>
+
           <li>
             <ul v-if="filmCast && filmCast.length >= 5"> Cast:
               <li v-for="(item, i) in 5" :key="i" class="ms-5"> {{ filmCast[i].name }} </li>
+            </ul>
+            <ul v-if="filmCast && filmCast.length < 5"> Cast:
+              <li v-for="(item, i) in filmCast.length" :key="i" class="ms-5"> {{ filmCast[i].name }} </li>
+            </ul>
+          </li>
+
+          <li>
+            <ul v-if="filmGenre.length >= 5"> Genere:
+              <li v-for="(item, j) in 5" :key="j" class="ms-5"> {{ filmGenre[j].name }} </li>
+            </ul>
+            <ul v-if="filmGenre.length < 5"> Genere:
+              <li v-for="(item, j) in filmGenre.length" :key="j" class="ms-5"> {{ filmGenre[j].name }} </li>
             </ul>
           </li>
 
@@ -79,6 +91,7 @@ export default {
       starVote: 0,
       starVoteNeg: 0,
       filmCast:"",
+      filmGenre: "",
     }
   },
 
@@ -86,8 +99,18 @@ export default {
 
     caricaCast(){
       if( this.filmCast == '' ){
-        axios.get('https://api.themoviedb.org/3/movie/' + this.id + '/credits?api_key=e14a682f2cb51ebef668a83973649087&language=it-IT')
-        .then(  (responseCast) => { this.filmCast = responseCast.data.cast; console.log(this.filmCast); })
+        axios
+          .all([
+            axios.get('https://api.themoviedb.org/3/movie/' + this.id + '/credits?api_key=e14a682f2cb51ebef668a83973649087&language=it-IT'),
+            axios.get('https://api.themoviedb.org/3/movie/' + this.id + '?api_key=e14a682f2cb51ebef668a83973649087&language=it-IT'),
+          ])
+          .then(axios.spread( (resCastFilm, resGenFilm) => { 
+            this.filmCast = resCastFilm.data.cast; 
+            console.log(this.filmCast);
+            this.filmGenre = resGenFilm.data.genres; 
+            console.log(this.filmGenre);
+
+            }))
       }
     },
 
@@ -110,6 +133,7 @@ export default {
       return this.urlFlag
     }
   },
+
 
 
 
